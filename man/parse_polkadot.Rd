@@ -4,7 +4,12 @@
 \alias{parse_polkadot}
 \title{Parse Cardano Staking Rewards}
 \usage{
-parse_polkadot(address, currency = "EUR", filename = "polkadot.csv")
+parse_polkadot(
+  address,
+  currency = "EUR",
+  pp_lang = "EN",
+  filename = "polkadot.csv"
+)
 }
 \value{
 
