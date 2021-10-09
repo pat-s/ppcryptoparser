@@ -2,16 +2,27 @@
 % Please edit documentation in R/polkadot.R
 \name{request_fun}
 \alias{request_fun}
-\title{Title}
+\title{Make API requests to Polkadot network}
 \usage{
-request_fun(address, page)
+request_fun(address, page, row = 1, api_key = NULL)
 }
 \arguments{
-\item{page}{}
+\item{address}{\verb{[character]}\cr
+Wallet address.}
+
+\item{page}{\verb{[integer]}\cr
+The page to query.}
+
+\item{row}{\verb{[integer]}\cr
+How many rows to query per page.}
+
+\item{api_key}{\link{character}\cr
+Optional personal API key.}
 }
 \value{
 
 }
 \description{
-Title
+Make API requests to Polkadot network
 }
+\keyword{internal}

@@ -2,14 +2,33 @@
 % Please edit documentation in R/polkadot.R
 \name{parse_polkadot}
 \alias{parse_polkadot}
-\title{Parse Cardano Staking Rewards}
+\title{Parse Polkadot Staking Rewards}
 \usage{
 parse_polkadot(
   address,
   currency = "EUR",
   pp_lang = "EN",
-  filename = "polkadot.csv"
+  filename = "polkadot.csv",
+  api_key = NULL
 )
+}
+\arguments{
+\item{address}{\verb{[character]}\cr
+Wallet address.}
+
+\item{currency}{\verb{[character]}\cr
+Currency in which to calculate the staking rewards.
+Must be part of a valid coin pair on Binance, e.g. "DOTEUR".}
+
+\item{pp_lang}{\link{character}\cr
+The currency of Portfolio Performance. Only German ("DE") and English
+("EN") are supported.}
+
+\item{filename}{\link{character}\cr
+The output filename.}
+
+\item{api_key}{\link{character}\cr
+Optional personal API key.}
 }
 \value{
 
@@ -19,4 +38,7 @@ Retrieves staking rewards for a specific account from \url{https://subscan.io}.
 }
 \examples{
 parse_polkadot("1qEk2g6N1uugFgyvmnsL6P9Conh5nTwL5mj85bm3XHtjc73")
+parse_polkadot("1qEk2g6N1uugFgyvmnsL6P9Conh5nTwL5mj85bm3XHtjc73",
+  api_key = "836063806b8c9dd642167210a05aa201"
+)
 }

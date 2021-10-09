@@ -29,8 +29,8 @@ parse_kusama <- function(address, currency = "EUR", pp_lang = "EN",
         origin = "1970-01-01", tz = "GMT"
       )) %>%
       arrange(Date) %>%
-      # DOT: 1/10000000000
-      # KSM: 1/1000000000000
+      # DOT: 1/10000000000 # nolint
+      # KSM: 1/1000000000000 # nolint
       mutate(Shares = as.numeric(amount) / 1000000000000) %>%
       relocate(Date, .before = account) %>%
       mutate(Type = "Delivery (Inbound)") %>%
@@ -44,8 +44,8 @@ parse_kusama <- function(address, currency = "EUR", pp_lang = "EN",
         origin = "1970-01-01", tz = "GMT"
       )) %>%
       arrange(Date) %>%
-      # DOT: 1/10000000000
-      # KSM: 1/1000000000000
+      # DOT: 1/10000000000 # nolint
+      # KSM: 1/1000000000000 # nolint
       mutate(Stück = as.numeric(amount) / 1000000000000) %>%
       relocate(Datum, .before = account) %>%
       mutate(Typ = "Einlieferung") %>%
