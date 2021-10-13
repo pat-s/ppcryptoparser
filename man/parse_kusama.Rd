@@ -2,21 +2,57 @@
 % Please edit documentation in R/kusama.R
 \name{parse_kusama}
 \alias{parse_kusama}
-\title{Parse Cardano Staking Rewards}
+\title{Parse Kusama Staking Rewards}
 \usage{
 parse_kusama(
   address,
+  pp_security_name = "Kusama",
   currency = "EUR",
   pp_lang = "EN",
-  filename = "kusama.csv"
+  filename = NULL,
+  api_key = NULL,
+  by_day = TRUE
 )
 }
-\value{
+\arguments{
+\item{address}{\verb{[character]}\cr
+Wallet address.}
 
+\item{pp_security_name}{\link{character}\cr
+The name of the security in Portfolio Performance (e.g. "Kusama").}
+
+\item{currency}{\verb{[character]}\cr
+Currency in which to calculate the staking rewards.
+Must be part of a valid coin pair on Binance, e.g. "DOTEUR".}
+
+\item{pp_lang}{\link{character}\cr
+The currency of Portfolio Performance. Only German ("DE") and English
+("EN") are supported.}
+
+\item{filename}{\link{character}\cr
+The output filename.}
+
+\item{api_key}{\link{character}\cr
+Optional personal API key.}
+
+\item{by_day}{\link{logical}\cr
+Whether to aggregate by day. Kusama staking rewards are paid up to four
+times per day.
+If set to \code{FALSE}, all individual rewards are returned.}
+}
+\value{
+\link[tibble:tibble]{tibble::tibble} (invisibly)
 }
 \description{
-Retrieves staking rewards for a specific account from
-\url{https://subscan.io}.
+Retrieves staking rewards for a specific account from \url{https://subscan.io}.
+
+Note that by default staking rewards are aggregated by day. Usually, Kusama
+pays out rewards up to four times per day. If you want to receive all
+individual staking rewards, set \code{by_day = FALSE}.
+
+A more coarse aggregation (weekly, monthly) would result in a biased "Value"
+column as one would need to take the mean of the selected period whereas the
+reward payouts actually happened on a daily base with a specific coin rate,
 }
 \examples{
 parse_kusama("E4ZoURFwN9eHPxwwDaijY6zXnTvZ3AwFFQFsnSekRTW2sPQ")

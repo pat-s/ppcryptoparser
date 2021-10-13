@@ -6,15 +6,19 @@
 \usage{
 parse_polkadot(
   address,
+  pp_security_name = "Polkadot",
   currency = "EUR",
   pp_lang = "EN",
-  filename = "polkadot.csv",
+  filename = NULL,
   api_key = NULL
 )
 }
 \arguments{
 \item{address}{\verb{[character]}\cr
 Wallet address.}
+
+\item{pp_security_name}{\link{character}\cr
+The name of the security in Portfolio Performance (e.g. "Kusama").}
 
 \item{currency}{\verb{[character]}\cr
 Currency in which to calculate the staking rewards.
@@ -31,7 +35,7 @@ The output filename.}
 Optional personal API key.}
 }
 \value{
-
+\link[tibble:tibble]{tibble::tibble} (invisibly)
 }
 \description{
 Retrieves staking rewards for a specific account from \url{https://subscan.io}.

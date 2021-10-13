@@ -4,11 +4,11 @@
 \alias{parse_cardano}
 \title{Parse Cardano Staking Rewards}
 \usage{
-parse_cardano(data, pp_lang = "DE", filename = "cardano.csv")
+parse_cardano(data, pp_lang = "DE", filename = NULL)
 }
 \arguments{
 \item{data}{\link{character}\cr
-The (generic) input CSV from pooltool.io.}
+The (generic) input CSV from \url{https://pooltool.io}.}
 
 \item{pp_lang}{\link{character}\cr
 The currency of Portfolio Performance. Only German ("DE") and English
@@ -16,8 +16,6 @@ The currency of Portfolio Performance. Only German ("DE") and English
 
 \item{filename}{\link{character}\cr
 The output filename.}
-
-\item{currency}{}
 }
 \value{
 \link{data.frame} (Invisible)

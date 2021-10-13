@@ -10,3 +10,4 @@
 ^\.csv$
 ^man-roxygen$
 .csv$
+^\.vscode$

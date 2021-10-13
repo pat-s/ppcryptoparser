@@ -2,9 +2,9 @@ test_that("parse_cardano works", {
   data("cardano")
 
   res_de <- parse_cardano(cardano, pp_lang = "DE")
-  checkmate::check_data_frame(res, any.missing = FALSE)
+  checkmate::check_data_frame(res_de, any.missing = FALSE)
   testthat::expect_named(res_de, c(
-    "Datum", "Stück", "Wechselkurs", "Buchungswährung", "Wert",
+    "Datum", "Stueck", "Wechselkurs", "Buchungswaehrung", "Wert",
     "Wertpapiername", "Typ"
   ))
 

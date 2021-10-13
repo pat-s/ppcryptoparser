@@ -1,2 +1,2 @@
 #' @importFrom utils globalVariables
-utils::globalVariables("resp_header")
+utils::globalVariables(c("resp_header", "."))

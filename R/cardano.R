@@ -8,13 +8,9 @@
 #' is a category that is different from "buy" and "interest".
 #'
 #' @param data [character]\cr
-#'   The (generic) input CSV from pooltool.io.
-#' @param pp_lang [character]\cr
-#'   The currency of Portfolio Performance. Only German ("DE") and English
-#'   ("EN") are supported.
-#' @param filename [character]\cr
-#'   The output filename.
-#' @param currency
+#'   The (generic) input CSV from \url{https://pooltool.io}.
+#' @template param_pp_lang
+#' @template param_filename
 #'
 #' @importFrom readr read_csv write_csv write_csv2 col_double col_datetime
 #'   col_character cols
@@ -27,8 +23,7 @@
 #' data("cardano")
 #' parse_cardano(cardano, pp_lang = "DE")
 #' parse_cardano(cardano, pp_lang = "EN")
-parse_cardano <- function(data, pp_lang = "DE", filename = "cardano.csv") {
-
+parse_cardano <- function(data, pp_lang = "DE", filename = NULL) {
   if (!inherits(data, "data.frame")) {
     data <- readr::read_csv(data, col_types = cols(
       date = col_datetime(format = ""),
@@ -51,22 +46,35 @@ parse_cardano <- function(data, pp_lang = "DE", filename = "cardano.csv") {
     # TODO: split time into its own col
     data_mod <- data %>%
       rename(
-        Datum = date, Stück = stake_rewards, Wert = stake_rewards_value, Wechselkurs = rate,
-        Buchungswährung = currency
+        Datum = .data$date, Stueck = .data$stake_rewards,
+        Wert = .data$stake_rewards_value,
+        Wechselkurs = .data$rate,
+        Buchungswaehrung = .data$currency
       ) %>%
       mutate(Wertpapiername = "Cardano") %>%
       mutate(Typ = "Einlieferung") %>%
-      select(-operator_rewards, -pool, -epoch, -stake, -operator_rewards_value, -value, -total_rewards)
-
-    readr::write_csv2(data_mod, filename)
+      select(
+        -.data$operator_rewards, -.data$pool, -.data$epoch, -.data$stake,
+        -.data$operator_rewards_value, -.data$value, -.data$total_rewards
+      )
+    if (!is.null(filename)) {
+      readr::write_csv2(data_mod, filename)
+    }
   } else if (pp_lang == "EN") {
     data_mod <- data %>%
-      rename(Date = date, Shares = stake_rewards, Value = stake_rewards_value, `Exchange Rate` = rate, `Transaction Currency` = currency) %>%
+      rename(
+        Date = .data$date, Shares = .data$stake_rewards, Value = .data$stake_rewards_value,
+        `Exchange Rate` = .data$rate, `Transaction Currency` = .data$currency
+      ) %>%
       mutate(`Security Name` = "Cardano") %>%
       mutate(Type = "Delivery (Inbound)") %>%
-      select(-operator_rewards, -pool, -epoch, -stake, -operator_rewards_value, -value, -total_rewards)
-
-    readr::write_csv(data_mod, filename)
+      select(
+        -.data$operator_rewards, -.data$pool, -.data$epoch, -.data$stake,
+        -.data$operator_rewards_value, -.data$value, -.data$total_rewards
+      )
+    if (!is.null(filename)) {
+      readr::write_csv(data_mod, filename)
+    }
   }
   return(invisible(data_mod))
 }

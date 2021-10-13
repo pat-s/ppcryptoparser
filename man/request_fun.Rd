@@ -4,7 +4,7 @@
 \alias{request_fun}
 \title{Make API requests to Polkadot network}
 \usage{
-request_fun(address, page, row = 1, api_key = NULL)
+request_fun(address, page, row = 1, api_key = NULL, chain = "polkadot")
 }
 \arguments{
 \item{address}{\verb{[character]}\cr
@@ -20,7 +20,7 @@ How many rows to query per page.}
 Optional personal API key.}
 }
 \value{
-
+httr2 response
 }
 \description{
 Make API requests to Polkadot network
