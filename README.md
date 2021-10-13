@@ -7,7 +7,7 @@
 [![R-CMD-check](https://github.com/pat-s/ppcryptoparser/workflows/R-CMD-check/badge.svg)](https://github.com/pat-s/ppcryptoparser/actions)
 <!-- badges: end -->
 
-The goal of {ppcryptoparser} is to simplify the import of staking reward CSV files into [Portfolio Performance](https://www.portfolio-performance.info/).
+The goal of {ppcryptoparser} is to simplify the import of staking reward from various altcoins into [Portfolio Performance](https://www.portfolio-performance.info/).
 
 ## Installation
 
@@ -27,8 +27,10 @@ remotes::install_github("pat-s/ppcryptoparser")
 
 ## Example
 
+Spin up an R session by calling "R" in a terminal and then run
+
 ```r
-library(ppcryptoparser)
+library("ppcryptoparser")
 
 parse_cardano(<address>, <csv output file>)
 ```
