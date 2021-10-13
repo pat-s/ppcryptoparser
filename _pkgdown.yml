@@ -1,8 +1,6 @@
 url: https://pat-s.github.io/ppcryptoparser
-
 template:
   bootstrap: 4
-
 authors:
   Patrick Schratz:
     href: https://pat-s.me

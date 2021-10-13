@@ -7,7 +7,8 @@ Authors@R:
 Description: Parses staking rewards from crypto currencies into a format
     suitable for reading by Portfolio Performance.
 License: MIT + file LICENSE
-URL: https://github.com/pat-s/ppcryptoparser
+URL: https://github.com/pat-s/ppcryptoparser,
+    https://pat-s.github.io/ppcryptoparser
 BugReports: https://github.com/pat-s/ppcryptoparser/issues
 Depends:
     R (>= 2.10)
