@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://pat-s.github.io/ppcryptoparser/index.html</loc>
+  </url>
+  <url>
+    <loc>https://pat-s.github.io/ppcryptoparser/reference/binance_klines.html</loc>
+  </url>
+  <url>
+    <loc>https://pat-s.github.io/ppcryptoparser/reference/cardano.html</loc>
+  </url>
+  <url>
+    <loc>https://pat-s.github.io/ppcryptoparser/reference/parse_cardano.html</loc>
+  </url>
+  <url>
+    <loc>https://pat-s.github.io/ppcryptoparser/reference/parse_kusama.html</loc>
+  </url>
+  <url>
+    <loc>https://pat-s.github.io/ppcryptoparser/reference/parse_polkadot.html</loc>
+  </url>
+  <url>
+    <loc>https://pat-s.github.io/ppcryptoparser/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://pat-s.github.io/ppcryptoparser/reference/request_fun.html</loc>
+  </url>
+</urlset>
