@@ -1,3 +1,5 @@
-# ppcryptoparser 0.0.0.9000
+<!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
-* Added a `NEWS.md` file to track changes to the package.
+# ppcryptoparser 0.0.1
+
+- Initial release
