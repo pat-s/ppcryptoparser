@@ -22,6 +22,7 @@ Ubuntu: `apt install r-base`
 You can then install `ppcryptoparser` from GitHub with:
 
 ``` r
+install.packages("remotes")
 remotes::install_github("pat-s/ppcryptoparser")
 ```
 
@@ -53,6 +54,14 @@ Please also consult the help files for each function, either on the command line
 
 The default language is set to (US) English (`"EN"`).
 The language setting should match the language used in Portfolio Performance.
+
+## Encoding & Windows
+
+I've seen that on Windows machines, the encoding might be set to something else than "UTF-8", causing issues in the processing.
+
+Also Windows seems to set the decimal separator to `.` instead of `,`, which causes a wrong import of the data.
+In this case, edit the resulting `.csv` file and change the decimal separators from `,` to `.` and check whether the import is working as intended.
+I might add an argument to the functions to account for this within the R package.
 
 ## CSV Import
 
