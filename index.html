@@ -85,7 +85,8 @@
 <p>Ubuntu: <code>apt install r-base</code></p>
 <p>You can then install <code>ppcryptoparser</code> from GitHub with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"pat-s/ppcryptoparser"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"pat-s/ppcryptoparser"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
@@ -118,6 +119,12 @@
 <h2 class="hasAnchor">
 <a href="#language--currency" class="anchor"></a>Language &amp; Currency</h2>
 <p>The default language is set to (US) English (<code>"EN"</code>). The language setting should match the language used in Portfolio Performance.</p>
+</div>
+<div id="encoding--windows" class="section level2">
+<h2 class="hasAnchor">
+<a href="#encoding--windows" class="anchor"></a>Encoding &amp; Windows</h2>
+<p>I’ve seen that on Windows machines, the encoding might be set to something else than “UTF-8”, causing issues in the processing.</p>
+<p>Also Windows seems to set the decimal separator to <code>.</code> instead of <code>,</code>, which causes a wrong import of the data. In this case, edit the resulting <code>.csv</code> file and change the decimal separators from <code>,</code> to <code>.</code> and check whether the import is working as intended. I might add an argument to the functions to account for this within the R package.</p>
 </div>
 <div id="csv-import" class="section level2">
 <h2 class="hasAnchor">
