@@ -1,3 +1,4 @@
+#' Decimal helper function
 #' @keywords internal
 #' @export
 helper_dec <- function(dec, pp_lang) {
@@ -17,14 +18,16 @@ helper_dec <- function(dec, pp_lang) {
   return(dec)
 }
 
+#' CSV writer helper function
 #' @keywords internal
+#' @importFrom utils write.table
 #' @export
 write_csv_helper <- function(data, filename, dec) {
   if (dec == ".") {
-    write.table(data, filename, dec = dec, row.names = FALSE, sep = ";")
+    utils::write.table(data, filename, dec = dec, row.names = FALSE, sep = ";")
   } else if (dec == ",") {
-    write.table(data, filename, dec = dec, row.names = FALSE, sep = ";")
+    utils::write.table(data, filename, dec = dec, row.names = FALSE, sep = ";")
   } else {
-    write.table(data, filename, row.names = FALSE, sep = ";")
+    utils::write.table(data, filename, row.names = FALSE, sep = ";")
   }
 }
