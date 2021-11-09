@@ -23,6 +23,7 @@
 #' @importFrom tibble as_tibble
 #' @importFrom magrittr %>%
 #' @import cli
+#' @importFrom utils write.table
 #'
 #' @examples
 #' parse_polkadot("1qEk2g6N1uugFgyvmnsL6P9Conh5nTwL5mj85bm3XHtjc73")
