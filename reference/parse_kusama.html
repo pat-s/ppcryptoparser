@@ -78,7 +78,7 @@ reward payouts actually happened on a daily base with a specific coin rate," />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ppcryptoparser</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -137,6 +137,7 @@ reward payouts actually happened on a daily base with a specific coin rate,</p>
   pp_security_name <span class='op'>=</span> <span class='st'>"Kusama"</span>,
   currency <span class='op'>=</span> <span class='st'>"EUR"</span>,
   pp_lang <span class='op'>=</span> <span class='st'>"EN"</span>,
+  dec <span class='op'>=</span> <span class='cn'>NULL</span>,
   filename <span class='op'>=</span> <span class='cn'>NULL</span>,
   api_key <span class='op'>=</span> <span class='cn'>NULL</span>,
   by_day <span class='op'>=</span> <span class='cn'>TRUE</span>
@@ -168,6 +169,14 @@ The currency of Portfolio Performance. Only German ("DE") and English
 ("EN") are supported.</p></td>
     </tr>
     <tr>
+      <th>dec</th>
+      <td><p><code>[character]</code> <br />
+Decimal separator. If not set, inferred by the value of argument <code>pp_lang</code>:</p><ul>
+<li><p>If <code>pp_lang = "DE"</code> -&gt; <code>dec = ","</code></p></li>
+<li><p>If <code>pp_lang = "EN"</code> -&gt; <code>dec = "."</code></p></li>
+</ul></td>
+    </tr>
+    <tr>
       <th>filename</th>
       <td><p><a href='https://rdrr.io/r/base/character.html'>character</a><br />
 The output filename.</p></td>
@@ -192,6 +201,9 @@ If set to <code>FALSE</code>, all individual rewards are returned.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'><span class='fu'>parse_kusama</span><span class='op'>(</span><span class='st'>"E4ZoURFwN9eHPxwwDaijY6zXnTvZ3AwFFQFsnSekRTW2sPQ"</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #00BBBB;'>ℹ</span> Setting decimal separator to <span style='color: #262626; background-color: #DADADA;'>`.`</span> because <span style='color: #262626; background-color: #DADADA;'>`pp_lang = 'EN'`</span> is set. If this is</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> undesired and/or you want to silence this warning, please explicitly set</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> argument <span style='color: #262626; background-color: #DADADA;'>`dec`</span>.</span>
 </pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

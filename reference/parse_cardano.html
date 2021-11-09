@@ -75,7 +75,7 @@ is a category that is different from &quot;buy&quot; and &quot;interest&quot;." 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ppcryptoparser</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -126,7 +126,13 @@ which can be read by Portfolio Performance.</p>
 is a category that is different from "buy" and "interest".</p>
     </div>
 
-    <pre class="usage"><span class='fu'>parse_cardano</span><span class='op'>(</span><span class='va'>data</span>, pp_lang <span class='op'>=</span> <span class='st'>"DE"</span>, filename <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>parse_cardano</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  pp_security_name <span class='op'>=</span> <span class='st'>"Cardano"</span>,
+  pp_lang <span class='op'>=</span> <span class='st'>"DE"</span>,
+  filename <span class='op'>=</span> <span class='cn'>NULL</span>,
+  dec <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -135,6 +141,11 @@ is a category that is different from "buy" and "interest".</p>
       <th>data</th>
       <td><p><a href='https://rdrr.io/r/base/character.html'>character</a><br />
 The (generic) input CSV from <a href='https://pooltool.io'>https://pooltool.io</a>.</p></td>
+    </tr>
+    <tr>
+      <th>pp_security_name</th>
+      <td><p><a href='https://rdrr.io/r/base/character.html'>character</a><br />
+The name of the security in Portfolio Performance (e.g. "Kusama").</p></td>
     </tr>
     <tr>
       <th>pp_lang</th>
@@ -147,6 +158,14 @@ The currency of Portfolio Performance. Only German ("DE") and English
       <td><p><a href='https://rdrr.io/r/base/character.html'>character</a><br />
 The output filename.</p></td>
     </tr>
+    <tr>
+      <th>dec</th>
+      <td><p><code>[character]</code> <br />
+Decimal separator. If not set, inferred by the value of argument <code>pp_lang</code>:</p><ul>
+<li><p>If <code>pp_lang = "DE"</code> -&gt; <code>dec = ","</code></p></li>
+<li><p>If <code>pp_lang = "EN"</code> -&gt; <code>dec = "."</code></p></li>
+</ul></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -156,7 +175,13 @@ The output filename.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"cardano"</span><span class='op'>)</span></span>
 <span class='r-in'><span class='fu'>parse_cardano</span><span class='op'>(</span><span class='va'>cardano</span>, pp_lang <span class='op'>=</span> <span class='st'>"DE"</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #00BBBB;'>ℹ</span> Setting decimal separator to <span style='color: #262626; background-color: #DADADA;'>`,`</span> because <span style='color: #262626; background-color: #DADADA;'>`pp_lang = 'DE'`</span> is set. If this is</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> undesired and/or you want to silence this warning, please explicitly set</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> argument <span style='color: #262626; background-color: #DADADA;'>`dec`</span>.</span>
 <span class='r-in'><span class='fu'>parse_cardano</span><span class='op'>(</span><span class='va'>cardano</span>, pp_lang <span class='op'>=</span> <span class='st'>"EN"</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #00BBBB;'>ℹ</span> Setting decimal separator to <span style='color: #262626; background-color: #DADADA;'>`.`</span> because <span style='color: #262626; background-color: #DADADA;'>`pp_lang = 'EN'`</span> is set. If this is</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> undesired and/or you want to silence this warning, please explicitly set</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> argument <span style='color: #262626; background-color: #DADADA;'>`dec`</span>.</span>
 </pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
