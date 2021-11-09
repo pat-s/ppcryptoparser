@@ -9,6 +9,7 @@
 #'
 #' @param data [character]\cr
 #'   The (generic) input CSV from \url{https://pooltool.io}.
+#' @template param_pp_security_name
 #' @template param_pp_lang
 #' @template param_filename
 #'
@@ -23,7 +24,7 @@
 #' data("cardano")
 #' parse_cardano(cardano, pp_lang = "DE")
 #' parse_cardano(cardano, pp_lang = "EN")
-parse_cardano <- function(data, pp_lang = "DE", filename = NULL) {
+parse_cardano <- function(data, pp_security_name = "Cardano", pp_lang = "DE", filename = NULL) {
   if (!inherits(data, "data.frame")) {
     data <- readr::read_csv(data, col_types = cols(
       date = col_datetime(format = ""),
@@ -51,7 +52,7 @@ parse_cardano <- function(data, pp_lang = "DE", filename = NULL) {
         Wechselkurs = .data$rate,
         Buchungswaehrung = .data$currency
       ) %>%
-      mutate(Wertpapiername = "Cardano") %>%
+      mutate(Wertpapiername = pp_security_name) %>%
       mutate(Typ = "Einlieferung") %>%
       select(
         -.data$operator_rewards, -.data$pool, -.data$epoch, -.data$stake,
@@ -66,7 +67,7 @@ parse_cardano <- function(data, pp_lang = "DE", filename = NULL) {
         Date = .data$date, Shares = .data$stake_rewards, Value = .data$stake_rewards_value,
         `Exchange Rate` = .data$rate, `Transaction Currency` = .data$currency
       ) %>%
-      mutate(`Security Name` = "Cardano") %>%
+      mutate(`Security Name` = pp_security_name) %>%
       mutate(Type = "Delivery (Inbound)") %>%
       select(
         -.data$operator_rewards, -.data$pool, -.data$epoch, -.data$stake,
