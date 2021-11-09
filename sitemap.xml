@@ -10,6 +10,9 @@
     <loc>https://pat-s.github.io/ppcryptoparser/reference/cardano.html</loc>
   </url>
   <url>
+    <loc>https://pat-s.github.io/ppcryptoparser/reference/helper_dec.html</loc>
+  </url>
+  <url>
     <loc>https://pat-s.github.io/ppcryptoparser/reference/parse_cardano.html</loc>
   </url>
   <url>
@@ -23,5 +26,8 @@
   </url>
   <url>
     <loc>https://pat-s.github.io/ppcryptoparser/reference/request_fun.html</loc>
+  </url>
+  <url>
+    <loc>https://pat-s.github.io/ppcryptoparser/reference/write_csv_helper.html</loc>
   </url>
 </urlset>
