@@ -33,7 +33,7 @@ Spin up an R session by calling "R" in a terminal and then run
 ```r
 library("ppcryptoparser")
 
-parse_cardano(<address>, <csv output file>)
+parse_polkadot(<address>, <csv output file>)
 ```
 
 Please also consult the help files for each function, either on the command line via `?<function name>` or by looking at the [pkgdown](https://pat-s.github.io/ppcryptoparser) page of this package.
