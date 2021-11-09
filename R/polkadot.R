@@ -10,6 +10,7 @@
 #'   Must be part of a valid coin pair on Binance, e.g. "DOTEUR".
 #' @template param_pp_lang
 #' @template param_filename
+#' @template param_dec
 #' @template param_api_key
 #'
 #' @return [tibble::tibble] (invisibly)
@@ -21,6 +22,7 @@
 #' @importFrom data.table rbindlist
 #' @importFrom tibble as_tibble
 #' @importFrom magrittr %>%
+#' @import cli
 #'
 #' @examples
 #' parse_polkadot("1qEk2g6N1uugFgyvmnsL6P9Conh5nTwL5mj85bm3XHtjc73")
@@ -29,19 +31,21 @@
 #' )
 parse_polkadot <- function(address, pp_security_name = "Polkadot",
                            currency = "EUR", pp_lang = "EN",
-                           filename = NULL, api_key = NULL) {
+                           dec = NULL, filename = NULL, api_key = NULL) {
+  dec <- helper_dec(dec, pp_lang)
+
   chain <- "polkadot"
   resp_tbl_prices <- workhorse(
     address, pp_security_name, currency,
-    pp_lang,
+    pp_lang, dec,
     filename, api_key, chain
   )
   return(invisible(resp_tbl_prices))
 }
 
 workhorse <- function(address, pp_security_name, currency = "EUR", pp_lang = "EN",
-                      filename = NULL, api_key = NULL, chain = "polkadot",
-                      by_day = FALSE) {
+                      dec = NULL, filename = NULL, api_key = NULL,
+                      chain = "polkadot", by_day = FALSE) {
   resp <- request_fun(address, page = 1, api_key = api_key, chain = chain)
   resp_body <- resp %>%
     resp_body_json()
@@ -137,7 +141,7 @@ workhorse <- function(address, pp_security_name, currency = "EUR", pp_lang = "EN
     }
 
     if (!is.null(filename)) {
-      readr::write_csv(resp_tbl_prices, filename)
+      write_csv_helper(resp_tbl_prices, filename, dec)
     }
   } else if (pp_lang == "DE") {
     resp_tibble <- resp_all %>%
@@ -183,7 +187,7 @@ workhorse <- function(address, pp_security_name, currency = "EUR", pp_lang = "EN
     }
 
     if (!is.null(filename)) {
-      readr::write_csv2(resp_tbl_prices, filename)
+      write_csv_helper(resp_tbl_prices, filename, dec)
     }
   }
   return(invisible(resp_tbl_prices))

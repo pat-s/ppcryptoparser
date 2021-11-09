@@ -9,6 +9,7 @@ parse_kusama(
   pp_security_name = "Kusama",
   currency = "EUR",
   pp_lang = "EN",
+  dec = NULL,
   filename = NULL,
   api_key = NULL,
   by_day = TRUE
@@ -28,6 +29,13 @@ Must be part of a valid coin pair on Binance, e.g. "DOTEUR".}
 \item{pp_lang}{\link{character}\cr
 The currency of Portfolio Performance. Only German ("DE") and English
 ("EN") are supported.}
+
+\item{dec}{\verb{[character]} \cr
+Decimal separator. If not set, inferred by the value of argument \code{pp_lang}:
+\itemize{
+\item If \code{pp_lang = "DE"} -> \code{dec = ","}
+\item If \code{pp_lang = "EN"} -> \code{dec = "."}
+}}
 
 \item{filename}{\link{character}\cr
 The output filename.}

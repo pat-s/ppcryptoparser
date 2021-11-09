@@ -8,7 +8,8 @@ parse_cardano(
   data,
   pp_security_name = "Cardano",
   pp_lang = "DE",
-  filename = NULL
+  filename = NULL,
+  dec = NULL
 )
 }
 \arguments{
@@ -24,6 +25,13 @@ The currency of Portfolio Performance. Only German ("DE") and English
 
 \item{filename}{\link{character}\cr
 The output filename.}
+
+\item{dec}{\verb{[character]} \cr
+Decimal separator. If not set, inferred by the value of argument \code{pp_lang}:
+\itemize{
+\item If \code{pp_lang = "DE"} -> \code{dec = ","}
+\item If \code{pp_lang = "EN"} -> \code{dec = "."}
+}}
 }
 \value{
 \link{data.frame} (Invisible)

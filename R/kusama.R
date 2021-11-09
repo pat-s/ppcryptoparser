@@ -18,6 +18,7 @@
 #'   Must be part of a valid coin pair on Binance, e.g. "DOTEUR".
 #' @template param_pp_lang
 #' @template param_filename
+#' @template param_dec
 #' @template param_api_key
 #' @param by_day [logical]\cr
 #'   Whether to aggregate by day. Kusama staking rewards are paid up to four
@@ -36,11 +37,14 @@
 #' @examples
 #' parse_kusama("E4ZoURFwN9eHPxwwDaijY6zXnTvZ3AwFFQFsnSekRTW2sPQ")
 parse_kusama <- function(address, pp_security_name = "Kusama", currency = "EUR",
-                         pp_lang = "EN", filename = NULL, api_key = NULL, by_day = TRUE) {
+                         pp_lang = "EN", dec = NULL, filename = NULL,
+                         api_key = NULL, by_day = TRUE) {
+  dec <- helper_dec(dec, pp_lang)
+
   chain <- "kusama"
   resp_tbl_prices <- workhorse(
     address, pp_security_name, currency,
-    pp_lang,
+    pp_lang, dec,
     filename, api_key, chain, by_day
   )
   return(invisible(resp_tbl_prices))
