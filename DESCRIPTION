@@ -20,6 +20,7 @@ Imports:
     lifecycle,
     magrittr,
     mlr3misc,
+    purrr,
     readr,
     rlang,
     tibble,
