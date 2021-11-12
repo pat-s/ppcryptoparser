@@ -54,5 +54,8 @@ The output filename.}
 Retrieves staking rewards for a specific account from \url{https://solanabeach.io}.
 }
 \examples{
-parse_solana("AsbXE1vn9Z2uZftkQKDMg9cx3ZaKGExxzfwe2u8uj9ZZ", filename = "~/Downloads/solana.csv", pp_lang = "EN", securities_account = "Ledger", api_key = Sys.getenv("solanabeach_api_key"))
+parse_solana("AsbXE1vn9Z2uZftkQKDMg9cx3ZaKGExxzfwe2u8uj9ZZ",
+  pp_lang = "EN", dec = ".",
+  api_key = Sys.getenv("solanabeach_api_key")
+)
 }

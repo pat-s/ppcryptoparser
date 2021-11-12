@@ -27,7 +27,10 @@
 #' @import cli
 #'
 #' @examples
-#' parse_solana("AsbXE1vn9Z2uZftkQKDMg9cx3ZaKGExxzfwe2u8uj9ZZ", filename = "~/Downloads/solana.csv", pp_lang = "EN", securities_account = "Ledger", api_key = Sys.getenv("solanabeach_api_key"))
+#' parse_solana("AsbXE1vn9Z2uZftkQKDMg9cx3ZaKGExxzfwe2u8uj9ZZ",
+#'   pp_lang = "EN", dec = ".",
+#'   api_key = Sys.getenv("solanabeach_api_key")
+#' )
 parse_solana <- function(address, pp_security_name = "Solana",
                          currency = "EUR", pp_lang = "EN",
                          securities_account = NULL, api_key,
