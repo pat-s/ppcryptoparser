@@ -43,6 +43,7 @@ Please also consult the help files for each function, either on the command line
 - Cardano (ADA)
 - Polkadot (DOT)
 - Kusama (KSM)
+- Solana (SOL) - [API Key needed!](#solana)
 
 ## Planned Support
 
@@ -68,3 +69,15 @@ I might add an argument to the functions to account for this within the R packag
 When importing, ensure to choose the type "Depotumsätze" / "Portfolio Transactions":
 
 ![Screenshot showing how to import CSV](man/figures/readme-1.png)
+
+## Coin-specific Infos
+
+### Kusama
+
+Kusama pays out rewards every six hours.
+`parse_kusama()` comes with an argument `"by_day" which aggregates rewards by day.
+
+### Solana
+
+Solana data is queried from https://solanabeach.io which requires an API key.
+Instructions how to ask for an API key can be found [on their GitHub README](https://github.com/solana-beach/api).
