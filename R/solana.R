@@ -137,7 +137,7 @@ workhorse_sol <- function(address, pp_security_name, currency = "EUR", pp_lang =
       mutate(Wert = .data$Stueck * .data$Wechselkurs)
 
     if (!is.null(securities_account)) {
-      resp_tbl_prices$`Konto` <- securities_account
+      resp_tbl_prices$`Depot` <- securities_account
     }
 
     if (!is.null(filename)) {

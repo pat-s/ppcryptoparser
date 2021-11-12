@@ -32,7 +32,7 @@ The currency of Portfolio Performance. Only German ("DE") and English
 
 \item{securities_account}{\link{character}\cr
 The name of the account to which to associate the deliveries.
-In German called "Konto".}
+In German called "Depot".}
 
 \item{api_key}{\link{character}\cr
 Optional personal API key.}
