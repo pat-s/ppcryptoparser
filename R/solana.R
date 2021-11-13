@@ -13,6 +13,9 @@
 #' @template param_filename
 #' @template param_dec
 #' @template param_api_key
+#' @param by_day [logical]\cr
+#'   Whether to aggregate staking rewards from different accounts by day.
+#'   If set to `FALSE`, all individual rewards are returned.
 #'
 #' @return [tibble::tibble] (invisibly)
 #' @export
@@ -27,14 +30,22 @@
 #' @import cli
 #'
 #' @examples
+#' # single address
 #' parse_solana("AsbXE1vn9Z2uZftkQKDMg9cx3ZaKGExxzfwe2u8uj9ZZ",
-#'   pp_lang = "EN", dec = ".",
 #'   api_key = Sys.getenv("solanabeach_api_key")
+#' )
+#' # multiple addresses
+#' parse_solana(c(
+#'   "AsbXE1vn9Z2uZftkQKDMg9cx3ZaKGExxzfwe2u8uj9ZZ",
+#'   "HUKZz7MK9dMGis2AC8trhSME3WFRSivVMfVDypkkNWJR"
+#' ),
+#' pp_lang = "EN", dec = ".",
+#' api_key = Sys.getenv("solanabeach_api_key")
 #' )
 parse_solana <- function(address, pp_security_name = "Solana",
                          currency = "EUR", pp_lang = "EN",
                          securities_account = NULL, api_key,
-                         dec = NULL, filename = NULL) {
+                         dec = NULL, filename = NULL, by_day = TRUE) {
   dec <- helper_dec(dec, pp_lang)
 
   resp_tbl_prices <- workhorse_sol(
@@ -47,23 +58,26 @@ parse_solana <- function(address, pp_security_name = "Solana",
 
 workhorse_sol <- function(address, pp_security_name, currency = "EUR", pp_lang = "EN",
                           securities_account, api_key,
-                          dec = NULL, filename = NULL) {
+                          dec = NULL, filename = NULL, by_day = TRUE) {
   resp_list <- list()
 
-  resp <- request_fun_sol(address, api_key = api_key)
-  resp_body <- resp %>%
-    resp_body_json()
-  resp_list[[1]] <- resp_body
-  while_n <- 2
-
-  while (length(resp_body) == 5) {
-    # get lowest epoch value
-    new_epoch_cursor <- resp_body[[length(resp_body)]]$epoch - 1
-    resp <- request_fun_sol(address, cursor = new_epoch_cursor, api_key)
+  for (i in address) {
+    resp <- request_fun_sol(i, api_key = api_key)
     resp_body <- resp %>%
       resp_body_json()
-    resp_list[[while_n]] <- resp_body
-    while_n <- while_n + 1
+    start_n <- length(resp_list) + 1
+    resp_list[[start_n]] <- resp_body
+    while_n <- start_n + 1
+
+    while (length(resp_body) == 5) {
+      # get lowest epoch value
+      new_epoch_cursor <- resp_body[[length(resp_body)]]$epoch - 1
+      resp <- request_fun_sol(i, cursor = new_epoch_cursor, api_key)
+      resp_body <- resp %>%
+        resp_body_json()
+      resp_list[[while_n]] <- resp_body
+      while_n <- while_n + 1
+    }
   }
 
   data_mod <- data.table::rbindlist(purrr::flatten(resp_list)) %>%
@@ -73,6 +87,14 @@ workhorse_sol <- function(address, pp_security_name, currency = "EUR", pp_lang =
       origin = "1970-01-01", tz = "GMT"
     )))
 
+  if (by_day) {
+    data_mod <- data_mod %>%
+      group_by(.data$Date) %>%
+      summarise(
+        amount = sum(.data$amount), timestamp = first(.data$timestamp),
+      ) %>%
+      ungroup()
+  }
 
   timestamp_date_unix <- data_mod %>%
     pull(.data$timestamp)
@@ -88,8 +110,7 @@ workhorse_sol <- function(address, pp_security_name, currency = "EUR", pp_lang =
     ))) %>%
     select(.data$Timestamp, .data$Close) %>%
     tibble::as_tibble() %>%
-    filter(between(.data$Timestamp, tail(timestamp_date, 1), timestamp_date[1]))
-
+    filter(between(.data$Timestamp, timestamp_date[1], tail(timestamp_date, 1)))
 
   if (pp_lang == "EN") {
     resp_tibble <- data_mod %>%

@@ -81,3 +81,11 @@ Kusama pays out rewards every six hours.
 
 Solana data is queried from https://solanabeach.io which requires an API key.
 Instructions how to ask for an API key can be found [on their GitHub README](https://github.com/solana-beach/api).
+
+Solana staking account cannot be topped up, hence often more than one staking account exists.
+`parse_solana()` is able to account for this by merging the rewards from multiple addresses.
+To do so, one needs to pass the addresses as a vector like this 
+
+```r
+parse_solana(c("<address1>", "<address2>"), by_day = TRUE)
+```

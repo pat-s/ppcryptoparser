@@ -12,7 +12,8 @@ parse_solana(
   securities_account = NULL,
   api_key,
   dec = NULL,
-  filename = NULL
+  filename = NULL,
+  by_day = TRUE
 )
 }
 \arguments{
@@ -46,6 +47,10 @@ Decimal separator. If not set, inferred by the value of argument \code{pp_lang}:
 
 \item{filename}{\link{character}\cr
 The output filename.}
+
+\item{by_day}{\link{logical}\cr
+Whether to aggregate staking rewards from different accounts by day.
+If set to \code{FALSE}, all individual rewards are returned.}
 }
 \value{
 \link[tibble:tibble]{tibble::tibble} (invisibly)
@@ -54,8 +59,16 @@ The output filename.}
 Retrieves staking rewards for a specific account from \url{https://solanabeach.io}.
 }
 \examples{
+# single address
 parse_solana("AsbXE1vn9Z2uZftkQKDMg9cx3ZaKGExxzfwe2u8uj9ZZ",
-  pp_lang = "EN", dec = ".",
   api_key = Sys.getenv("solanabeach_api_key")
+)
+# multiple addresses
+parse_solana(c(
+  "AsbXE1vn9Z2uZftkQKDMg9cx3ZaKGExxzfwe2u8uj9ZZ",
+  "HUKZz7MK9dMGis2AC8trhSME3WFRSivVMfVDypkkNWJR"
+),
+pp_lang = "EN", dec = ".",
+api_key = Sys.getenv("solanabeach_api_key")
 )
 }
