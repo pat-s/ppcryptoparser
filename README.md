@@ -56,6 +56,13 @@ Please also consult the help files for each function, either on the command line
 The default language is set to (US) English (`"EN"`).
 The language setting should match the language used in Portfolio Performance.
 
+## Viewing statistics in Portfolio Performance
+
+Staking statistics for inbound deliveries can be viewed under "Payments -> Savings" (German: "Zahlungen -> Ersparnisse").
+To only see the staking rewards in this menu, **you need to book the staking rewards to a dedicated depot which only contains the staking rewards**.
+Then you can select this depot via the filter option.
+Otherwise, when selecting your complete portfolio, also buy actions will be included in this overview and blur the statistics.
+
 ## Encoding & Windows
 
 I've seen that on Windows machines, the encoding might be set to something else than "UTF-8", causing issues in the processing.
