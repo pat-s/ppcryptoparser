@@ -47,7 +47,7 @@ parse_kusama <- function(address, pp_security_name = "Kusama", currency = "EUR",
   chain <- "kusama"
   resp_tbl_prices <- workhorse(
     address, pp_security_name, currency,
-    pp_lang, securities_account, dec,
+    pp_lang, securities_account, dec, sep,
     filename, api_key, chain, by_day
   )
   return(invisible(resp_tbl_prices))

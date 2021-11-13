@@ -132,10 +132,6 @@ workhorse <- function(address, pp_security_name, currency = "EUR", pp_lang = "EN
       select(-.data$Close) %>%
       mutate(Value = .data$Shares * .data$`Exchange Rate`)
 
-    if (!is.null(securities_account)) {
-      resp_tbl_prices$`Securities Account` <- securities_account
-    }
-
     if (by_day) {
       resp_tbl_prices <- resp_tbl_prices %>%
         group_by(.data$Date) %>%
@@ -147,6 +143,10 @@ workhorse <- function(address, pp_security_name, currency = "EUR", pp_lang = "EN
           Value = sum(.data$Value)
         ) %>%
         ungroup()
+    }
+
+    if (!is.null(securities_account)) {
+      resp_tbl_prices$`Securities Account` <- securities_account
     }
 
     if (!is.null(filename)) {
@@ -182,10 +182,6 @@ workhorse <- function(address, pp_security_name, currency = "EUR", pp_lang = "EN
       select(-.data$Close) %>%
       mutate(Wert = .data$Stueck * .data$Wechselkurs)
 
-    if (!is.null(securities_account)) {
-      resp_tbl_prices$`Depot` <- securities_account
-    }
-
     if (by_day) {
       resp_tbl_prices <- resp_tbl_prices %>%
         group_by(.data$Datum) %>%
@@ -197,6 +193,10 @@ workhorse <- function(address, pp_security_name, currency = "EUR", pp_lang = "EN
           Wert = sum(.data$Wert)
         ) %>%
         ungroup()
+    }
+
+    if (!is.null(securities_account)) {
+      resp_tbl_prices$`Depot` <- securities_account
     }
 
     if (!is.null(filename)) {
