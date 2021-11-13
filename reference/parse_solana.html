@@ -128,6 +128,7 @@
   securities_account <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>api_key</span>,
   dec <span class='op'>=</span> <span class='cn'>NULL</span>,
+  sep <span class='op'>=</span> <span class='st'>";"</span>,
   filename <span class='op'>=</span> <span class='cn'>NULL</span>,
   by_day <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span></pre>
@@ -175,6 +176,11 @@ Decimal separator. If not set, inferred by the value of argument <code>pp_lang</
 <li><p>If <code>pp_lang = "DE"</code> -&gt; <code>dec = ","</code></p></li>
 <li><p>If <code>pp_lang = "EN"</code> -&gt; <code>dec = "."</code></p></li>
 </ul></td>
+    </tr>
+    <tr>
+      <th>sep</th>
+      <td><p><code>[character]</code> <br />
+Columns separator. Defaults to <code>;</code>.</p></td>
     </tr>
     <tr>
       <th>filename</th>

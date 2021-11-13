@@ -130,6 +130,7 @@ is a category that is different from "buy" and "interest".</p>
   <span class='va'>data</span>,
   pp_security_name <span class='op'>=</span> <span class='st'>"Cardano"</span>,
   pp_lang <span class='op'>=</span> <span class='st'>"DE"</span>,
+  securities_account <span class='op'>=</span> <span class='cn'>NULL</span>,
   filename <span class='op'>=</span> <span class='cn'>NULL</span>,
   dec <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre>
@@ -152,6 +153,12 @@ The name of the security in Portfolio Performance (e.g. "Kusama").</p></td>
       <td><p><a href='https://rdrr.io/r/base/character.html'>character</a><br />
 The currency of Portfolio Performance. Only German ("DE") and English
 ("EN") are supported.</p></td>
+    </tr>
+    <tr>
+      <th>securities_account</th>
+      <td><p><a href='https://rdrr.io/r/base/character.html'>character</a><br />
+The name of the account to which to associate the deliveries.
+In German called "Depot".</p></td>
     </tr>
     <tr>
       <th>filename</th>

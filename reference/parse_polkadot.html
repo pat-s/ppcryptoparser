@@ -125,7 +125,9 @@
   pp_security_name <span class='op'>=</span> <span class='st'>"Polkadot"</span>,
   currency <span class='op'>=</span> <span class='st'>"EUR"</span>,
   pp_lang <span class='op'>=</span> <span class='st'>"EN"</span>,
+  securities_account <span class='op'>=</span> <span class='cn'>NULL</span>,
   dec <span class='op'>=</span> <span class='cn'>NULL</span>,
+  sep <span class='op'>=</span> <span class='st'>";"</span>,
   filename <span class='op'>=</span> <span class='cn'>NULL</span>,
   api_key <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre>
@@ -156,12 +158,23 @@ The currency of Portfolio Performance. Only German ("DE") and English
 ("EN") are supported.</p></td>
     </tr>
     <tr>
+      <th>securities_account</th>
+      <td><p><a href='https://rdrr.io/r/base/character.html'>character</a><br />
+The name of the account to which to associate the deliveries.
+In German called "Depot".</p></td>
+    </tr>
+    <tr>
       <th>dec</th>
       <td><p><code>[character]</code> <br />
 Decimal separator. If not set, inferred by the value of argument <code>pp_lang</code>:</p><ul>
 <li><p>If <code>pp_lang = "DE"</code> -&gt; <code>dec = ","</code></p></li>
 <li><p>If <code>pp_lang = "EN"</code> -&gt; <code>dec = "."</code></p></li>
 </ul></td>
+    </tr>
+    <tr>
+      <th>sep</th>
+      <td><p><code>[character]</code> <br />
+Columns separator. Defaults to <code>;</code>.</p></td>
     </tr>
     <tr>
       <th>filename</th>
