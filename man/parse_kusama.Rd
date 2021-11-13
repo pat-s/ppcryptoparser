@@ -24,7 +24,7 @@ Wallet address.}
 \item{pp_security_name}{\link{character}\cr
 The name of the security in Portfolio Performance (e.g. "Kusama").}
 
-\item{currency}{\verb{[character]}\cr
+\item{currency}{\link{character}\cr
 Currency in which to calculate the staking rewards.
 Must be part of a valid coin pair on Binance, e.g. "DOTEUR".}
 
@@ -36,14 +36,14 @@ The currency of Portfolio Performance. Only German ("DE") and English
 The name of the account to which to associate the deliveries.
 In German called "Depot".}
 
-\item{dec}{\verb{[character]} \cr
+\item{dec}{\link{character} \cr
 Decimal separator. If not set, inferred by the value of argument \code{pp_lang}:
 \itemize{
 \item If \code{pp_lang = "DE"} -> \code{dec = ","}
 \item If \code{pp_lang = "EN"} -> \code{dec = "."}
 }}
 
-\item{sep}{\verb{[character]} \cr
+\item{sep}{\link{character} \cr
 Columns separator. Defaults to \verb{;}.}
 
 \item{filename}{\link{character}\cr
@@ -72,5 +72,5 @@ column as one would need to take the mean of the selected period whereas the
 reward payouts actually happened on a daily base with a specific coin rate,
 }
 \examples{
-parse_kusama("E4ZoURFwN9eHPxwwDaijY6zXnTvZ3AwFFQFsnSekRTW2sPQ")
+parse_kusama("E4ZoURFwN9eHPxwwDaijY6zXnTvZ3AwFFQFsnSekRTW2sPQ", dec = ".")
 }

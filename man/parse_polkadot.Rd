@@ -23,7 +23,7 @@ Wallet address.}
 \item{pp_security_name}{\link{character}\cr
 The name of the security in Portfolio Performance (e.g. "Kusama").}
 
-\item{currency}{\verb{[character]}\cr
+\item{currency}{\link{character}\cr
 Currency in which to calculate the staking rewards.
 Must be part of a valid coin pair on Binance, e.g. "DOTEUR".}
 
@@ -35,14 +35,14 @@ The currency of Portfolio Performance. Only German ("DE") and English
 The name of the account to which to associate the deliveries.
 In German called "Depot".}
 
-\item{dec}{\verb{[character]} \cr
+\item{dec}{\link{character} \cr
 Decimal separator. If not set, inferred by the value of argument \code{pp_lang}:
 \itemize{
 \item If \code{pp_lang = "DE"} -> \code{dec = ","}
 \item If \code{pp_lang = "EN"} -> \code{dec = "."}
 }}
 
-\item{sep}{\verb{[character]} \cr
+\item{sep}{\link{character} \cr
 Columns separator. Defaults to \verb{;}.}
 
 \item{filename}{\link{character}\cr
@@ -58,8 +58,8 @@ Optional personal API key.}
 Retrieves staking rewards for a specific account from \url{https://subscan.io}.
 }
 \examples{
-parse_polkadot("1qEk2g6N1uugFgyvmnsL6P9Conh5nTwL5mj85bm3XHtjc73")
+parse_polkadot("1qEk2g6N1uugFgyvmnsL6P9Conh5nTwL5mj85bm3XHtjc73", dec = ".")
 parse_polkadot("1qEk2g6N1uugFgyvmnsL6P9Conh5nTwL5mj85bm3XHtjc73",
-  api_key = "836063806b8c9dd642167210a05aa201"
+  api_key = Sys.getenv("subscan_api_key"), dec = "."
 )
 }

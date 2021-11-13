@@ -5,7 +5,7 @@
 #'
 #' @template param_address
 #' @template param_pp_security_name
-#' @param currency `[character]`\cr
+#' @param currency [character]\cr
 #'   Currency in which to calculate the staking rewards.
 #'   Must be part of a valid coin pair on Binance, e.g. "DOTEUR".
 #' @template param_pp_lang
@@ -27,9 +27,9 @@
 #' @import cli
 #'
 #' @examples
-#' parse_polkadot("1qEk2g6N1uugFgyvmnsL6P9Conh5nTwL5mj85bm3XHtjc73")
+#' parse_polkadot("1qEk2g6N1uugFgyvmnsL6P9Conh5nTwL5mj85bm3XHtjc73", dec = ".")
 #' parse_polkadot("1qEk2g6N1uugFgyvmnsL6P9Conh5nTwL5mj85bm3XHtjc73",
-#'   api_key = "836063806b8c9dd642167210a05aa201"
+#'   api_key = Sys.getenv("subscan_api_key"), dec = "."
 #' )
 parse_polkadot <- function(address, pp_security_name = "Polkadot",
                            currency = "EUR", pp_lang = "EN",

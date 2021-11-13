@@ -1,2 +1,2 @@
-#' @param sep `[character]` \cr
+#' @param sep [character] \cr
 #'   Columns separator. Defaults to `;`.

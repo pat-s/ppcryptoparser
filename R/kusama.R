@@ -13,7 +13,7 @@
 #'
 #' @template param_address
 #' @template param_pp_security_name
-#' @param currency `[character]`\cr
+#' @param currency [character]\cr
 #'   Currency in which to calculate the staking rewards.
 #'   Must be part of a valid coin pair on Binance, e.g. "DOTEUR".
 #' @template param_pp_lang
@@ -37,7 +37,7 @@
 #' @importFrom rlang .data
 #'
 #' @examples
-#' parse_kusama("E4ZoURFwN9eHPxwwDaijY6zXnTvZ3AwFFQFsnSekRTW2sPQ")
+#' parse_kusama("E4ZoURFwN9eHPxwwDaijY6zXnTvZ3AwFFQFsnSekRTW2sPQ", dec = ".")
 parse_kusama <- function(address, pp_security_name = "Kusama", currency = "EUR",
                          pp_lang = "EN", securities_account = NULL, dec = NULL,
                          sep = ";", filename = NULL,

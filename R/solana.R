@@ -5,7 +5,7 @@
 #'
 #' @template param_address
 #' @template param_pp_security_name
-#' @param currency `[character]`\cr
+#' @param currency [character]\cr
 #'   Currency in which to calculate the staking rewards.
 #'   Must be part of a valid coin pair on Binance, e.g. "DOTEUR".
 #' @template param_pp_lang
@@ -33,7 +33,7 @@
 #' @examples
 #' # single address
 #' parse_solana("AsbXE1vn9Z2uZftkQKDMg9cx3ZaKGExxzfwe2u8uj9ZZ",
-#'   api_key = Sys.getenv("solanabeach_api_key")
+#'   api_key = Sys.getenv("solanabeach_api_key"), dec = "."
 #' )
 #' # multiple addresses
 #' parse_solana(c(

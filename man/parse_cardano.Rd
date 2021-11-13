@@ -31,7 +31,7 @@ In German called "Depot".}
 \item{filename}{\link{character}\cr
 The output filename.}
 
-\item{dec}{\verb{[character]} \cr
+\item{dec}{\link{character} \cr
 Decimal separator. If not set, inferred by the value of argument \code{pp_lang}:
 \itemize{
 \item If \code{pp_lang = "DE"} -> \code{dec = ","}
