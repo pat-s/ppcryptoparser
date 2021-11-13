@@ -9,6 +9,7 @@ parse_polkadot(
   pp_security_name = "Polkadot",
   currency = "EUR",
   pp_lang = "EN",
+  securities_account = NULL,
   dec = NULL,
   filename = NULL,
   api_key = NULL
@@ -28,6 +29,10 @@ Must be part of a valid coin pair on Binance, e.g. "DOTEUR".}
 \item{pp_lang}{\link{character}\cr
 The currency of Portfolio Performance. Only German ("DE") and English
 ("EN") are supported.}
+
+\item{securities_account}{\link{character}\cr
+The name of the account to which to associate the deliveries.
+In German called "Depot".}
 
 \item{dec}{\verb{[character]} \cr
 Decimal separator. If not set, inferred by the value of argument \code{pp_lang}:

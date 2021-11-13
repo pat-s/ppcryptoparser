@@ -49,7 +49,6 @@ Please also consult the help files for each function, either on the command line
 ## Planned Support
 
 - Terra (LUNA)
-- Solana (SOL)
 - Polygon (MATIC)
 
 ## Language & Currency

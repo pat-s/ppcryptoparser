@@ -9,6 +9,7 @@
 #'   Currency in which to calculate the staking rewards.
 #'   Must be part of a valid coin pair on Binance, e.g. "DOTEUR".
 #' @template param_pp_lang
+#' @template param_securities_account
 #' @template param_filename
 #' @template param_dec
 #' @template param_api_key
@@ -31,19 +32,21 @@
 #' )
 parse_polkadot <- function(address, pp_security_name = "Polkadot",
                            currency = "EUR", pp_lang = "EN",
+                           securities_account = NULL,
                            dec = NULL, filename = NULL, api_key = NULL) {
   dec <- helper_dec(dec, pp_lang)
 
   chain <- "polkadot"
   resp_tbl_prices <- workhorse(
     address, pp_security_name, currency,
-    pp_lang, dec,
+    pp_lang, securities_account, dec,
     filename, api_key, chain
   )
   return(invisible(resp_tbl_prices))
 }
 
 workhorse <- function(address, pp_security_name, currency = "EUR", pp_lang = "EN",
+                      securities_account = NULL,
                       dec = NULL, filename = NULL, api_key = NULL,
                       chain = "polkadot", by_day = FALSE) {
   resp <- request_fun(address, page = 1, api_key = api_key, chain = chain)
@@ -127,6 +130,10 @@ workhorse <- function(address, pp_security_name, currency = "EUR", pp_lang = "EN
       select(-.data$Close) %>%
       mutate(Value = .data$Shares * .data$`Exchange Rate`)
 
+    if (!is.null(securities_account)) {
+      resp_tbl_prices$`Securities Account` <- securities_account
+    }
+
     if (by_day) {
       resp_tbl_prices <- resp_tbl_prices %>%
         group_by(.data$Date) %>%
@@ -172,6 +179,10 @@ workhorse <- function(address, pp_security_name, currency = "EUR", pp_lang = "EN
       mutate(Wechselkurs = as.numeric(.data$Close)) %>%
       select(-.data$Close) %>%
       mutate(Wert = .data$Stueck * .data$Wechselkurs)
+
+    if (!is.null(securities_account)) {
+      resp_tbl_prices$`Depot` <- securities_account
+    }
 
     if (by_day) {
       resp_tbl_prices <- resp_tbl_prices %>%

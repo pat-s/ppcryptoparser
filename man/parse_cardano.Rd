@@ -8,6 +8,7 @@ parse_cardano(
   data,
   pp_security_name = "Cardano",
   pp_lang = "DE",
+  securities_account = NULL,
   filename = NULL,
   dec = NULL
 )
@@ -22,6 +23,10 @@ The name of the security in Portfolio Performance (e.g. "Kusama").}
 \item{pp_lang}{\link{character}\cr
 The currency of Portfolio Performance. Only German ("DE") and English
 ("EN") are supported.}
+
+\item{securities_account}{\link{character}\cr
+The name of the account to which to associate the deliveries.
+In German called "Depot".}
 
 \item{filename}{\link{character}\cr
 The output filename.}

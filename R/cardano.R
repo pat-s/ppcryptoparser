@@ -11,6 +11,7 @@
 #'   The (generic) input CSV from \url{https://pooltool.io}.
 #' @template param_pp_security_name
 #' @template param_pp_lang
+#' @template param_securities_account
 #' @template param_dec
 #' @template param_filename
 #'
@@ -26,6 +27,7 @@
 #' parse_cardano(cardano, pp_lang = "DE")
 #' parse_cardano(cardano, pp_lang = "EN")
 parse_cardano <- function(data, pp_security_name = "Cardano", pp_lang = "DE",
+                          securities_account = NULL,
                           filename = NULL, dec = NULL) {
   if (!inherits(data, "data.frame")) {
     data <- readr::read_csv(data, col_types = cols(
@@ -62,6 +64,9 @@ parse_cardano <- function(data, pp_security_name = "Cardano", pp_lang = "DE",
         -.data$operator_rewards, -.data$pool, -.data$epoch, -.data$stake,
         -.data$operator_rewards_value, -.data$value, -.data$total_rewards
       )
+    if (!is.null(securities_account)) {
+      resp_tbl_prices$`Securities Account` <- securities_account
+    }
     if (!is.null(filename)) {
       readr::write_csv2(data_mod, filename)
     }
@@ -77,6 +82,9 @@ parse_cardano <- function(data, pp_security_name = "Cardano", pp_lang = "DE",
         -.data$operator_rewards, -.data$pool, -.data$epoch, -.data$stake,
         -.data$operator_rewards_value, -.data$value, -.data$total_rewards
       )
+    if (!is.null(securities_account)) {
+      resp_tbl_prices$`Depot` <- securities_account
+    }
     if (!is.null(filename)) {
       write_csv_helper(data_mod, filename, dec)
     }
