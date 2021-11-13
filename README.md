@@ -5,6 +5,7 @@
 [![CRAN status](https://www.r-pkg.org/badges/version/ppcryptoparser)](https://CRAN.R-project.org/package=ppcryptoparser)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/pat-s/ppcryptoparser/workflows/R-CMD-check/badge.svg)](https://github.com/pat-s/ppcryptoparser/actions)
+<a href="https://www.buymeacoffee.com/patrickschratz" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="20" width="85"></a>
 <!-- badges: end -->
 
 The goal of {ppcryptoparser} is to simplify the import of staking reward from various altcoins into [Portfolio Performance](https://www.portfolio-performance.info/).
