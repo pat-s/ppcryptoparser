@@ -12,6 +12,7 @@
 #' @template param_securities_account
 #' @template param_filename
 #' @template param_dec
+#' @template param_sep
 #' @template param_api_key
 #'
 #' @return [tibble::tibble] (invisibly)
@@ -33,13 +34,14 @@
 parse_polkadot <- function(address, pp_security_name = "Polkadot",
                            currency = "EUR", pp_lang = "EN",
                            securities_account = NULL,
-                           dec = NULL, filename = NULL, api_key = NULL) {
+                           dec = NULL, sep = ";",
+                           filename = NULL, api_key = NULL) {
   dec <- helper_dec(dec, pp_lang)
 
   chain <- "polkadot"
   resp_tbl_prices <- workhorse(
     address, pp_security_name, currency,
-    pp_lang, securities_account, dec,
+    pp_lang, securities_account, dec, sep,
     filename, api_key, chain
   )
   return(invisible(resp_tbl_prices))
@@ -47,7 +49,7 @@ parse_polkadot <- function(address, pp_security_name = "Polkadot",
 
 workhorse <- function(address, pp_security_name, currency = "EUR", pp_lang = "EN",
                       securities_account = NULL,
-                      dec = NULL, filename = NULL, api_key = NULL,
+                      dec = NULL, sep = ";", filename = NULL, api_key = NULL,
                       chain = "polkadot", by_day = FALSE) {
   resp <- request_fun(address, page = 1, api_key = api_key, chain = chain)
   resp_body <- resp %>%
@@ -148,7 +150,7 @@ workhorse <- function(address, pp_security_name, currency = "EUR", pp_lang = "EN
     }
 
     if (!is.null(filename)) {
-      write_csv_helper(resp_tbl_prices, filename, dec)
+      write_csv_helper(resp_tbl_prices, filename, dec, sep)
     }
   } else if (pp_lang == "DE") {
     resp_tibble <- resp_all %>%
@@ -198,7 +200,7 @@ workhorse <- function(address, pp_security_name, currency = "EUR", pp_lang = "EN
     }
 
     if (!is.null(filename)) {
-      write_csv_helper(resp_tbl_prices, filename, dec)
+      write_csv_helper(resp_tbl_prices, filename, dec, sep)
     }
   }
   return(invisible(resp_tbl_prices))

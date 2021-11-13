@@ -20,6 +20,7 @@
 #' @template param_securities_account
 #' @template param_filename
 #' @template param_dec
+#' @template param_sep
 #' @template param_api_key
 #' @param by_day [logical]\cr
 #'   Whether to aggregate by day. Kusama staking rewards are paid up to four
@@ -39,7 +40,7 @@
 #' parse_kusama("E4ZoURFwN9eHPxwwDaijY6zXnTvZ3AwFFQFsnSekRTW2sPQ")
 parse_kusama <- function(address, pp_security_name = "Kusama", currency = "EUR",
                          pp_lang = "EN", securities_account = NULL, dec = NULL,
-                         filename = NULL,
+                         sep = ";", filename = NULL,
                          api_key = NULL, by_day = TRUE) {
   dec <- helper_dec(dec, pp_lang)
 

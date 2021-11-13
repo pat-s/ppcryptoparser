@@ -12,6 +12,7 @@ parse_solana(
   securities_account = NULL,
   api_key,
   dec = NULL,
+  sep = ";",
   filename = NULL,
   by_day = TRUE
 )
@@ -44,6 +45,9 @@ Decimal separator. If not set, inferred by the value of argument \code{pp_lang}:
 \item If \code{pp_lang = "DE"} -> \code{dec = ","}
 \item If \code{pp_lang = "EN"} -> \code{dec = "."}
 }}
+
+\item{sep}{\verb{[character]} \cr
+Columns separator. Defaults to \verb{;}.}
 
 \item{filename}{\link{character}\cr
 The output filename.}

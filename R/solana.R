@@ -12,6 +12,7 @@
 #' @template param_securities_account
 #' @template param_filename
 #' @template param_dec
+#' @template param_sep
 #' @template param_api_key
 #' @param by_day [logical]\cr
 #'   Whether to aggregate staking rewards from different accounts by day.
@@ -45,20 +46,20 @@
 parse_solana <- function(address, pp_security_name = "Solana",
                          currency = "EUR", pp_lang = "EN",
                          securities_account = NULL, api_key,
-                         dec = NULL, filename = NULL, by_day = TRUE) {
+                         dec = NULL, sep = ";", filename = NULL, by_day = TRUE) {
   dec <- helper_dec(dec, pp_lang)
 
   resp_tbl_prices <- workhorse_sol(
     address, pp_security_name, currency,
     pp_lang, securities_account, api_key, dec,
-    filename
+    sep, filename
   )
   return(invisible(resp_tbl_prices))
 }
 
 workhorse_sol <- function(address, pp_security_name, currency = "EUR", pp_lang = "EN",
                           securities_account, api_key,
-                          dec = NULL, filename = NULL, by_day = TRUE) {
+                          dec = NULL, sep = ";", filename = NULL, by_day = TRUE) {
   resp_list <- list()
 
   for (i in address) {
@@ -134,7 +135,7 @@ workhorse_sol <- function(address, pp_security_name, currency = "EUR", pp_lang =
     }
 
     if (!is.null(filename)) {
-      write_csv_helper(resp_tbl_prices, filename, dec)
+      write_csv_helper(resp_tbl_prices, filename, dec, sep)
     }
   } else if (pp_lang == "DE") {
     resp_tibble <- data_mod %>%
@@ -162,7 +163,7 @@ workhorse_sol <- function(address, pp_security_name, currency = "EUR", pp_lang =
     }
 
     if (!is.null(filename)) {
-      write_csv_helper(resp_tbl_prices, filename, dec)
+      write_csv_helper(resp_tbl_prices, filename, dec, sep)
     }
   }
   return(invisible(resp_tbl_prices))

@@ -4,7 +4,7 @@
 \alias{write_csv_helper}
 \title{CSV writer helper function}
 \usage{
-write_csv_helper(data, filename, dec)
+write_csv_helper(data, filename, dec, sep)
 }
 \description{
 CSV writer helper function

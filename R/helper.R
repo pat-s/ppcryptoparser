@@ -22,12 +22,12 @@ helper_dec <- function(dec, pp_lang) {
 #' @keywords internal
 #' @importFrom utils write.table
 #' @export
-write_csv_helper <- function(data, filename, dec) {
+write_csv_helper <- function(data, filename, dec, sep) {
   if (dec == ".") {
-    utils::write.table(data, filename, dec = dec, row.names = FALSE, sep = ";")
+    utils::write.table(data, filename, dec = dec, row.names = FALSE, sep = sep)
   } else if (dec == ",") {
-    utils::write.table(data, filename, dec = dec, row.names = FALSE, sep = ";")
+    utils::write.table(data, filename, dec = dec, row.names = FALSE, sep = sep)
   } else {
-    utils::write.table(data, filename, row.names = FALSE, sep = ";")
+    utils::write.table(data, filename, row.names = FALSE, sep = sep)
   }
 }
