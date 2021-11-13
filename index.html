@@ -104,6 +104,8 @@
 <li>Cardano (ADA)</li>
 <li>Polkadot (DOT)</li>
 <li>Kusama (KSM)</li>
+<li>Solana (SOL) - <a href="#solana">API Key needed!</a>
+</li>
 </ul>
 </div>
 <div id="planned-support" class="section level2">
@@ -131,6 +133,23 @@
 <a href="#csv-import" class="anchor"></a>CSV Import</h2>
 <p>When importing, ensure to choose the type “Depotumsätze” / “Portfolio Transactions”:</p>
 <p><img src="reference/figures/readme-1.png" alt="Screenshot showing how to import CSV"></p>
+</div>
+<div id="coin-specific-infos" class="section level2">
+<h2 class="hasAnchor">
+<a href="#coin-specific-infos" class="anchor"></a>Coin-specific Infos</h2>
+<div id="kusama" class="section level3">
+<h3 class="hasAnchor">
+<a href="#kusama" class="anchor"></a>Kusama</h3>
+<p>Kusama pays out rewards every six hours. <code><a href="reference/parse_kusama.html">parse_kusama()</a></code> comes with an argument `“by_day” which aggregates rewards by day.</p>
+</div>
+<div id="solana" class="section level3">
+<h3 class="hasAnchor">
+<a href="#solana" class="anchor"></a>Solana</h3>
+<p>Solana data is queried from <a href="https://solanabeach.io" class="uri">https://solanabeach.io</a> which requires an API key. Instructions how to ask for an API key can be found <a href="https://github.com/solana-beach/api">on their GitHub README</a>.</p>
+<p>Solana staking account cannot be topped up, hence often more than one staking account exists. <code><a href="reference/parse_solana.html">parse_solana()</a></code> is able to account for this by merging the rewards from multiple addresses. To do so, one needs to pass the addresses as a vector like this</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/parse_solana.html">parse_solana</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"&lt;address1&gt;"</span>, <span class="st">"&lt;address2&gt;"</span><span class="op">)</span>, by_day <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+</div>
 </div>
 </div>
   </div>
