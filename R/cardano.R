@@ -65,7 +65,7 @@ parse_cardano <- function(data, pp_security_name = "Cardano", pp_lang = "DE",
         -.data$operator_rewards_value, -.data$value, -.data$total_rewards
       )
     if (!is.null(securities_account)) {
-      resp_tbl_prices$`Securities Account` <- securities_account
+      data_mod$`Depot` <- securities_account
     }
     if (!is.null(filename)) {
       readr::write_csv2(data_mod, filename)
@@ -83,7 +83,7 @@ parse_cardano <- function(data, pp_security_name = "Cardano", pp_lang = "DE",
         -.data$operator_rewards_value, -.data$value, -.data$total_rewards
       )
     if (!is.null(securities_account)) {
-      resp_tbl_prices$`Depot` <- securities_account
+      data_mod$`Securities Account` <- securities_account
     }
     if (!is.null(filename)) {
       write_csv_helper(data_mod, filename, dec)

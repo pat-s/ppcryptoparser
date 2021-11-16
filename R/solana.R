@@ -62,6 +62,7 @@ workhorse_sol <- function(address, pp_security_name, currency = "EUR", pp_lang =
                           dec = NULL, sep = ";", filename = NULL, by_day = TRUE) {
   resp_list <- list()
 
+
   for (i in address) {
     resp <- request_fun_sol(i, api_key = api_key)
     resp_body <- resp %>%
@@ -70,7 +71,7 @@ workhorse_sol <- function(address, pp_security_name, currency = "EUR", pp_lang =
     resp_list[[start_n]] <- resp_body
     while_n <- start_n + 1
 
-    while (length(resp_body) == 5) {
+    while (length(resp_body) >= 2) {
       # get lowest epoch value
       new_epoch_cursor <- resp_body[[length(resp_body)]]$epoch - 1
       resp <- request_fun_sol(i, cursor = new_epoch_cursor, api_key)
