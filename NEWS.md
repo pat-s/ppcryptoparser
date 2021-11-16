@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# ppcryptoparser 0.2.1
+
+- Fixed Solana and Cardano functions
+
+
 # ppcryptoparser 0.2.0
 
 - Support for Solana via `parse_solana()`. Note: API key required, see README for instructions.
