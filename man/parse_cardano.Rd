@@ -10,7 +10,8 @@ parse_cardano(
   pp_lang = "DE",
   securities_account = NULL,
   filename = NULL,
-  dec = NULL
+  dec = NULL,
+  sep = ";"
 )
 }
 \arguments{
@@ -37,6 +38,9 @@ Decimal separator. If not set, inferred by the value of argument \code{pp_lang}:
 \item If \code{pp_lang = "DE"} -> \code{dec = ","}
 \item If \code{pp_lang = "EN"} -> \code{dec = "."}
 }}
+
+\item{sep}{\link{character} \cr
+Columns separator. Defaults to \verb{;}.}
 }
 \value{
 \link{data.frame} (Invisible)

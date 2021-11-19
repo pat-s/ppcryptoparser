@@ -13,6 +13,7 @@
 #' @template param_pp_lang
 #' @template param_securities_account
 #' @template param_dec
+#' @template param_sep
 #' @template param_filename
 #'
 #' @importFrom readr read_csv write_csv write_csv2 col_double col_datetime
@@ -28,7 +29,7 @@
 #' parse_cardano(cardano, pp_lang = "EN")
 parse_cardano <- function(data, pp_security_name = "Cardano", pp_lang = "DE",
                           securities_account = NULL,
-                          filename = NULL, dec = NULL) {
+                          filename = NULL, dec = NULL, sep = ";") {
   if (!inherits(data, "data.frame")) {
     data <- readr::read_csv(data, col_types = cols(
       date = col_datetime(format = ""),
@@ -68,7 +69,7 @@ parse_cardano <- function(data, pp_security_name = "Cardano", pp_lang = "DE",
       data_mod$`Depot` <- securities_account
     }
     if (!is.null(filename)) {
-      readr::write_csv2(data_mod, filename)
+      write_csv_helper(data_mod, filename, dec)
     }
   } else if (pp_lang == "EN") {
     data_mod <- data %>%
