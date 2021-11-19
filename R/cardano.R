@@ -69,7 +69,7 @@ parse_cardano <- function(data, pp_security_name = "Cardano", pp_lang = "DE",
       data_mod$`Depot` <- securities_account
     }
     if (!is.null(filename)) {
-      write_csv_helper(data_mod, filename, dec)
+      write_csv_helper(data_mod, filename, dec, sep)
     }
   } else if (pp_lang == "EN") {
     data_mod <- data %>%
@@ -87,7 +87,7 @@ parse_cardano <- function(data, pp_security_name = "Cardano", pp_lang = "DE",
       data_mod$`Securities Account` <- securities_account
     }
     if (!is.null(filename)) {
-      write_csv_helper(data_mod, filename, dec)
+      write_csv_helper(data_mod, filename, dec, sep)
     }
   }
   return(invisible(data_mod))
