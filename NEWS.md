@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# ppcryptoparser 0.2.2
+
+- `parse_cardano()`: add `sep` argument and fix `dec` argument
+
+
 # ppcryptoparser 0.2.1
 
 - Fixed Solana and Cardano functions
