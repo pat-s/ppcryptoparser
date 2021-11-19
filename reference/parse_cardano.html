@@ -75,7 +75,7 @@ is a category that is different from &quot;buy&quot; and &quot;interest&quot;." 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ppcryptoparser</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -132,7 +132,8 @@ is a category that is different from "buy" and "interest".</p>
   pp_lang <span class='op'>=</span> <span class='st'>"DE"</span>,
   securities_account <span class='op'>=</span> <span class='cn'>NULL</span>,
   filename <span class='op'>=</span> <span class='cn'>NULL</span>,
-  dec <span class='op'>=</span> <span class='cn'>NULL</span>
+  dec <span class='op'>=</span> <span class='cn'>NULL</span>,
+  sep <span class='op'>=</span> <span class='st'>";"</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -172,6 +173,11 @@ Decimal separator. If not set, inferred by the value of argument <code>pp_lang</
 <li><p>If <code>pp_lang = "DE"</code> -&gt; <code>dec = ","</code></p></li>
 <li><p>If <code>pp_lang = "EN"</code> -&gt; <code>dec = "."</code></p></li>
 </ul></td>
+    </tr>
+    <tr>
+      <th>sep</th>
+      <td><p><a href='https://rdrr.io/r/base/character.html'>character</a> <br />
+Columns separator. Defaults to <code>;</code>.</p></td>
     </tr>
     </table>
 
