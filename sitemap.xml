@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://pat-s.github.io/ppcryptoparser/404.html</loc>
+  </url>
+  <url>
+    <loc>https://pat-s.github.io/ppcryptoparser/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://pat-s.github.io/ppcryptoparser/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://pat-s.github.io/ppcryptoparser/authors.html</loc>
+  </url>
+  <url>
     <loc>https://pat-s.github.io/ppcryptoparser/index.html</loc>
+  </url>
+  <url>
+    <loc>https://pat-s.github.io/ppcryptoparser/news/index.html</loc>
   </url>
   <url>
     <loc>https://pat-s.github.io/ppcryptoparser/reference/binance_klines.html</loc>
@@ -11,6 +26,9 @@
   </url>
   <url>
     <loc>https://pat-s.github.io/ppcryptoparser/reference/helper_dec.html</loc>
+  </url>
+  <url>
+    <loc>https://pat-s.github.io/ppcryptoparser/reference/index.html</loc>
   </url>
   <url>
     <loc>https://pat-s.github.io/ppcryptoparser/reference/parse_cardano.html</loc>
